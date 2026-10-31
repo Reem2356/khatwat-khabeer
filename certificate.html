@@ -9,158 +9,66 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F4F7F8;
-    --surface:#FFFFFF;
-    --ink:#0F262B;
-    --ink-soft:#516468;
-    --purple:#7257A4;
-    --cyan:#2FADE0;
-    --teal:#238CAA;
-    --tealgreen:#129E93;
-    --border:#DCE6E9;
-    --night:#003845;
-    --night-2:#0B5164;
-    --gold:#E3A857;
-    --shadow:0 18px 44px -20px rgba(0,0,0,.25);
+    --bg:#F4F7F8; --surface:#FFFFFF; --ink:#0F262B; --ink-soft:#516468;
+    --cyan:#2FADE0; --teal:#238CAA; --tealgreen:#129E93; --border:#DCE6E9;
+    --night:#003845; --gold:#E3A857; --shadow:0 18px 44px -20px rgba(0,0,0,.25);
+    --name:#0B3A4C;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
-  body{
-    background:var(--bg);color:var(--ink);
-    font-family:"Tajawal",sans-serif;
-    direction:rtl;text-align:right;
-    min-height:100vh;
-  }
+  body{background:var(--bg);color:var(--ink);font-family:"Tajawal",sans-serif;direction:rtl;text-align:right;min-height:100vh;}
   a{color:inherit;}
   .topbar{background:var(--night);}
-  .topbar-inner{
-    max-width:1000px;margin:0 auto;padding:14px 20px;
-    display:flex;align-items:center;justify-content:space-between;
-  }
+  .topbar-inner{max-width:1000px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
   .brand{display:flex;align-items:center;gap:10px;color:#EAF6F8;font-family:"Cairo",sans-serif;font-weight:800;font-size:17px;text-decoration:none;}
   .brand svg{width:26px;height:26px;color:#EAF6F8;}
-  .back{
-    display:inline-flex;align-items:center;gap:6px;
-    color:#CFE9EF;font-family:"Cairo",sans-serif;font-weight:700;font-size:13.5px;
-    text-decoration:none;
-  }
+  .back{display:inline-flex;align-items:center;gap:6px;color:#CFE9EF;font-family:"Cairo",sans-serif;font-weight:700;font-size:13.5px;text-decoration:none;}
   .back svg{width:16px;height:16px;}
 
-  .wrap{max-width:720px;margin:0 auto;padding:36px 20px 64px;}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 20px 64px;}
   .page-head{text-align:center;margin-bottom:26px;}
-  .page-head .tag{
-    font-family:"IBM Plex Sans",sans-serif;font-size:12px;letter-spacing:.12em;
-    color:var(--teal);text-transform:uppercase;font-weight:600;
-  }
+  .page-head .tag{font-family:"Cairo",sans-serif;font-size:12.5px;color:var(--teal);font-weight:700;}
   .page-head h1{font-family:"Cairo",sans-serif;font-weight:800;font-size:26px;margin:6px 0 8px;}
   .page-head p{color:var(--ink-soft);font-size:14.5px;margin:0;}
 
-  .card{
-    background:var(--surface);border:1px solid var(--border);border-radius:18px;
-    padding:24px;box-shadow:var(--shadow);
-  }
-  .search-row{display:flex;gap:10px;flex-wrap:wrap;}
-  #idInput{
-    flex:1 1 220px;min-width:0;
-    font-family:"Cairo",sans-serif;font-weight:700;font-size:20px;letter-spacing:.03em;
-    padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);
-    background:var(--bg);color:var(--ink);text-align:center;direction:ltr;
-  }
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:var(--shadow);}
+  .search-row{display:flex;gap:10px;flex-wrap:wrap;max-width:620px;margin:0 auto;}
+  #idInput{flex:1 1 220px;min-width:0;font-family:"Cairo",sans-serif;font-weight:700;font-size:20px;letter-spacing:.03em;
+    padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);background:var(--bg);color:var(--ink);text-align:center;direction:ltr;}
   #idInput:focus{outline:none;border-color:var(--teal);}
-  button{
-    font-family:"Cairo",sans-serif;font-weight:700;font-size:15.5px;
-    border:none;border-radius:12px;padding:14px 24px;cursor:pointer;
-    background:linear-gradient(180deg,#4DC2EE,#2FADE0);color:#00303F;
-    transition:opacity .15s ease, transform .05s ease;
-  }
+  button{font-family:"Cairo",sans-serif;font-weight:700;font-size:15.5px;border:none;border-radius:12px;padding:14px 24px;cursor:pointer;
+    background:linear-gradient(180deg,#4DC2EE,#2FADE0);color:#00303F;transition:opacity .15s ease, transform .05s ease;}
   button:hover{opacity:.92;}
   button:active{transform:translateY(1px);}
   button.ghost{background:transparent;color:var(--teal);border:1.5px solid var(--border);}
-  .hint{margin-top:10px;font-size:12.5px;color:var(--ink-soft);}
-  #status{
-    display:flex;align-items:center;gap:8px;font-family:"Cairo",sans-serif;font-weight:700;
-    font-size:13.5px;margin-top:12px;min-height:18px;
-  }
+  .hint{margin:10px auto 0;max-width:620px;font-size:12.5px;color:var(--ink-soft);}
+  #status{display:flex;align-items:center;gap:8px;font-family:"Cairo",sans-serif;font-weight:700;font-size:13.5px;margin:12px auto 0;max-width:620px;min-height:18px;}
   #status .dot{width:7px;height:7px;border-radius:50%;flex:none;}
-  #status.ok{color:var(--tealgreen);}
-  #status.ok .dot{background:var(--tealgreen);}
-  #status.err{color:#C0493A;}
-  #status.err .dot{background:#C0493A;}
+  #status.ok{color:var(--tealgreen);} #status.ok .dot{background:var(--tealgreen);}
+  #status.err{color:#C0493A;} #status.err .dot{background:#C0493A;}
 
   #certSection{margin-top:22px;}
-  .cert{
-    position:relative;overflow:hidden;
-    background:#fff;border-radius:16px;border:1px solid var(--border);
-    box-shadow:var(--shadow);
-    padding:34px 28px 26px;
-    text-align:center;
-  }
-  .cert::before,.cert::after{
-    content:"";position:absolute;width:230px;height:230px;border-radius:30px;
-    background:linear-gradient(135deg,var(--night) 0%,var(--teal) 55%,var(--cyan) 100%);
-    z-index:0;
-  }
-  .cert::before{top:-120px;right:-120px;transform:rotate(18deg);}
-  .cert::after{bottom:-120px;left:-120px;transform:rotate(18deg);}
-  .cert .corner-line{
-    position:absolute;width:260px;height:3px;background:var(--gold);z-index:1;
-  }
-  .cert .corner-line.tl{top:92px;right:-70px;transform:rotate(-26deg);}
-  .cert .corner-line.br{bottom:92px;left:-70px;transform:rotate(-26deg);}
-  .cert-inner{position:relative;z-index:2;}
-
-  .cert-orgs{
-    display:flex;align-items:center;justify-content:center;gap:10px;
-    font-family:"Cairo",sans-serif;font-weight:700;font-size:12.5px;color:var(--night);
-    line-height:1.7;margin-bottom:14px;
-  }
-  .cert-mark{display:flex;align-items:center;gap:6px;color:var(--night);font-weight:800;}
-  .cert-mark svg{width:22px;height:22px;}
-  .cert-divider{width:60px;height:2px;background:var(--gold);margin:14px auto;border-radius:2px;}
-
-  .cert h2.title{
-    font-family:"Cairo",sans-serif;font-weight:900;font-size:34px;color:var(--night);
-    margin:4px 0 10px;
-  }
-  .cert .sub{font-size:14px;color:var(--ink-soft);margin:0 0 20px;}
-
-  .cert-name{
-    font-family:"Cairo",sans-serif;font-weight:800;color:var(--night);
-    font-size:28px;margin:4px 0;line-height:1.3;word-wrap:break-word;
-  }
-  .cert-name-underline{width:46%;max-width:260px;height:2px;background:var(--gold);margin:8px auto 18px;border-radius:2px;}
-
-  .cert .line1{font-size:14px;color:var(--ink-soft);margin:0 0 4px;}
-  .cert .line2{font-family:"Cairo",sans-serif;font-weight:800;font-size:19px;color:var(--night);margin:2px 0;}
-  .cert .line3{font-size:13.5px;color:var(--ink-soft);margin:2px 0 14px;}
-  .cert .thanks{font-size:12.5px;color:var(--ink-soft);margin-top:14px;}
-
-  .cert-footer{
-    display:flex;justify-content:space-between;gap:12px;margin-top:22px;
-    padding-top:16px;border-top:1px dashed var(--border);
-    font-size:11.5px;color:var(--ink-soft);
-    position:relative;background:#fff;border-radius:10px;
-    padding-left:10px;padding-right:10px;padding-bottom:4px;
-  }
-  .cert-footer b{display:block;color:var(--night);font-family:"Cairo",sans-serif;font-size:12.5px;margin-bottom:2px;}
+  /* the certificate: the original design image + the name laid on top */
+  .certimg{position:relative;width:100%;container-type:inline-size;border-radius:6px;overflow:hidden;
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.3);line-height:0;}
+  .certimg img{display:block;width:100%;height:auto;}
+  .certname{position:absolute;left:19%;right:19%;top:45.2%;transform:translateY(-50%);
+    text-align:center;line-height:1.25;font-family:"Cairo",sans-serif;font-weight:800;color:var(--name);
+    font-size:4.3cqw;white-space:nowrap;}
 
   .certActions{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap;}
   .note{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:10px;line-height:1.8;}
 
+  @page{size:A4 landscape;margin:0;}
   @media print{
-    .topbar,.page-head,.card > .search-row,.card > .hint,#status,.certActions,.note{display:none !important;}
-    body{background:#fff;}
+    html,body{background:#fff;min-height:0;height:auto;}
+    .topbar,.page-head,.search-row,.hint,#status,.certActions,.note{display:none !important;}
     .wrap{padding:0;max-width:none;}
-    .card{border:none;box-shadow:none;padding:0;}
-    .cert{box-shadow:none;}
+    .card{border:none;box-shadow:none;padding:0;background:none;}
+    #certSection{margin:0;}
+    .certimg{box-shadow:none;border-radius:0;width:97%;margin:1.5% auto 0;break-inside:avoid;}
   }
-
-  @media (max-width:480px){
-    .card{padding:18px;border-radius:14px;}
-    .cert{padding:26px 16px 20px;}
-    .cert h2.title{font-size:27px;}
-    .cert-name{font-size:21px;}
-  }
+  @media (max-width:480px){ .card{padding:16px;border-radius:14px;} }
 </style>
 </head>
 <body>
@@ -178,12 +86,8 @@
 
 <div class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="index.html">
-      <svg viewBox="0 0 120 120"><use href="#mark"/></svg>
-      <span>خطوة خبير</span>
-    </a>
-    <a class="back" href="index.html">
-      العودة للموقع
+    <a class="brand" href="index.html"><svg viewBox="0 0 120 120"><use href="#mark"/></svg><span>خطوة خبير</span></a>
+    <a class="back" href="index.html">العودة للموقع
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
     </a>
   </div>
@@ -205,41 +109,16 @@
     <div id="status"></div>
 
     <div id="certSection" hidden>
-      <div class="cert">
-        <span class="corner-line tl"></span>
-        <span class="corner-line br"></span>
-        <div class="cert-inner">
-          <div class="cert-orgs">
-            <span class="cert-mark"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>خطوة خبير</span>
-          </div>
-          <div class="line1">الإدارة العامة للتعليم بمنطقة الحدود الشمالية</div>
-          <div class="line1">المتوسطة السابعة بعرعر</div>
-
-          <h2 class="title">شهادة حضور</h2>
-          <p class="sub">تشهد المتوسطة السابعة بعرعر بأن</p>
-
-          <div class="cert-name" id="certName">—</div>
-          <div class="cert-name-underline"></div>
-
-          <div class="line1">قد حضر/ت الورشة التدريبية</div>
-          <div class="line2">من معلم إلى خبير</div>
-          <div class="line3">ضمن مبادرة «خطوة خبير»</div>
-
-          <div class="cert-divider"></div>
-          <div class="thanks">شكرًا لحضوركم ومشاركتكم الفاعلة، مع خالص التمنيات بدوام التوفيق والتميز</div>
-
-          <div class="cert-footer">
-            <div><b>مديرة المدرسة</b>أ. جواهر عبدالرحمن الرويلي</div>
-            <div><b>مقدمة الورشة</b>أ. ريم ناصر الخمسان</div>
-          </div>
-        </div>
+      <div class="certimg">
+        <img id="certBg" src="certificate-bg.jpg" alt="شهادة حضور">
+        <div class="certname" id="certName"></div>
       </div>
-
       <div class="certActions">
-        <button class="ghost" id="printBtn">طباعة / حفظ PDF</button>
+        <button id="printBtn">طباعة / حفظ PDF</button>
+        <button class="ghost" id="downloadBtn">تحميل كصورة</button>
         <button class="ghost" id="newSearchBtn">بحث عن رقم آخر</button>
       </div>
-      <div class="note">يمكنك أيضًا الضغط بزر الفأرة الأيمن على الشهادة واختيار "طباعة" أو حفظها كصورة من خيارات المتصفح.</div>
+      <div class="note">للحفظ PDF: اضغطي «طباعة» واختاري «حفظ بتنسيق PDF»، والاتجاه أفقي.</div>
     </div>
   </div>
 </div>
@@ -254,9 +133,12 @@
   var searchBtn = document.getElementById('searchBtn');
   var newSearchBtn = document.getElementById('newSearchBtn');
   var printBtn = document.getElementById('printBtn');
+  var downloadBtn = document.getElementById('downloadBtn');
   var statusEl = document.getElementById('status');
   var certSection = document.getElementById('certSection');
   var certName = document.getElementById('certName');
+  var certBg = document.getElementById('certBg');
+  var NAME_COLOR = '#0B3A4C';
 
   function normalizeDigits(s){
     var map = {'٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9',
@@ -264,10 +146,18 @@
     return (s||'').split('').map(function(ch){ return map[ch] !== undefined ? map[ch] : ch; }).join('');
   }
   function cleanId(raw){ return normalizeDigits(raw).replace(/[^0-9]/g,''); }
-
   function setStatus(kind, text){
     statusEl.className = kind ? kind : '';
     statusEl.innerHTML = kind ? '<span class="dot"></span>' + text : '';
+  }
+  /* shrink the on-screen name if it is wider than the blank area */
+  function fitName(){
+    certName.style.fontSize = '';
+    var size = parseFloat(getComputedStyle(certName).fontSize);
+    var guard = 0;
+    while (certName.scrollWidth > certName.clientWidth && size > 8 && guard < 40){
+      size -= 1; certName.style.fontSize = size + 'px'; guard++;
+    }
   }
 
   function doSearch(){
@@ -279,7 +169,35 @@
     certName.textContent = name;
     certSection.hidden = false;
     setStatus('ok', 'تم العثور على: ' + name);
+    requestAnimationFrame(fitName);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitName);
     certSection.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function downloadImage(){
+    var name = certName.textContent;
+    var go = function(){
+      var W = certBg.naturalWidth, H = certBg.naturalHeight;
+      var c = document.createElement('canvas'); c.width = W; c.height = H;
+      var ctx = c.getContext('2d');
+      ctx.drawImage(certBg, 0, 0, W, H);
+      var size = Math.round(W * 0.043), maxW = W * 0.62;
+      ctx.direction = 'rtl'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillStyle = NAME_COLOR;
+      do { ctx.font = '800 ' + size + 'px Cairo, sans-serif'; size--; } while (ctx.measureText(name).width > maxW && size > 10);
+      ctx.fillText(name, W/2, H*0.452);
+      c.toBlob(function(blob){
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.download = 'شهادة - ' + name + '.png';
+        a.href = url;
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+      }, 'image/png');
+    };
+    if (document.fonts && document.fonts.load){
+      document.fonts.load('800 60px Cairo').then(go, go);
+    } else { go(); }
   }
 
   searchBtn.addEventListener('click', doSearch);
@@ -289,6 +207,8 @@
     certSection.hidden = true; idInput.value = ''; idInput.focus(); setStatus('', '');
   });
   printBtn.addEventListener('click', function(){ window.print(); });
+  downloadBtn.addEventListener('click', downloadImage);
+  window.addEventListener('resize', function(){ if (!certSection.hidden) fitName(); });
 })();
 </script>
 </body>
