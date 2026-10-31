@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>شهادتي · خطوة خبير</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F7F8;
+    --surface:#FFFFFF;
+    --ink:#0F262B;
+    --ink-soft:#516468;
+    --purple:#7257A4;
+    --cyan:#2FADE0;
+    --teal:#238CAA;
+    --tealgreen:#129E93;
+    --border:#DCE6E9;
+    --night:#003845;
+    --night-2:#0B5164;
+    --gold:#E3A857;
+    --shadow:0 18px 44px -20px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:"Tajawal",sans-serif;
+    direction:rtl;text-align:right;
+    min-height:100vh;
+  }
+  a{color:inherit;}
+  .topbar{background:var(--night);}
+  .topbar-inner{
+    max-width:1000px;margin:0 auto;padding:14px 20px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{display:flex;align-items:center;gap:10px;color:#EAF6F8;font-family:"Cairo",sans-serif;font-weight:800;font-size:17px;text-decoration:none;}
+  .brand svg{width:26px;height:26px;color:#EAF6F8;}
+  .back{
+    display:inline-flex;align-items:center;gap:6px;
+    color:#CFE9EF;font-family:"Cairo",sans-serif;font-weight:700;font-size:13.5px;
+    text-decoration:none;
+  }
+  .back svg{width:16px;height:16px;}
+
+  .wrap{max-width:720px;margin:0 auto;padding:36px 20px 64px;}
+  .page-head{text-align:center;margin-bottom:26px;}
+  .page-head .tag{
+    font-family:"IBM Plex Sans",sans-serif;font-size:12px;letter-spacing:.12em;
+    color:var(--teal);text-transform:uppercase;font-weight:600;
+  }
+  .page-head h1{font-family:"Cairo",sans-serif;font-weight:800;font-size:26px;margin:6px 0 8px;}
+  .page-head p{color:var(--ink-soft);font-size:14.5px;margin:0;}
+
+  .card{
+    background:var(--surface);border:1px solid var(--border);border-radius:18px;
+    padding:24px;box-shadow:var(--shadow);
+  }
+  .search-row{display:flex;gap:10px;flex-wrap:wrap;}
+  #idInput{
+    flex:1 1 220px;min-width:0;
+    font-family:"Cairo",sans-serif;font-weight:700;font-size:20px;letter-spacing:.03em;
+    padding:14px 16px;border-radius:12px;border:1.5px solid var(--border);
+    background:var(--bg);color:var(--ink);text-align:center;direction:ltr;
+  }
+  #idInput:focus{outline:none;border-color:var(--teal);}
+  button{
+    font-family:"Cairo",sans-serif;font-weight:700;font-size:15.5px;
+    border:none;border-radius:12px;padding:14px 24px;cursor:pointer;
+    background:linear-gradient(180deg,#4DC2EE,#2FADE0);color:#00303F;
+    transition:opacity .15s ease, transform .05s ease;
+  }
+  button:hover{opacity:.92;}
+  button:active{transform:translateY(1px);}
+  button.ghost{background:transparent;color:var(--teal);border:1.5px solid var(--border);}
+  .hint{margin-top:10px;font-size:12.5px;color:var(--ink-soft);}
+  #status{
+    display:flex;align-items:center;gap:8px;font-family:"Cairo",sans-serif;font-weight:700;
+    font-size:13.5px;margin-top:12px;min-height:18px;
+  }
+  #status .dot{width:7px;height:7px;border-radius:50%;flex:none;}
+  #status.ok{color:var(--tealgreen);}
+  #status.ok .dot{background:var(--tealgreen);}
+  #status.err{color:#C0493A;}
+  #status.err .dot{background:#C0493A;}
+
+  #certSection{margin-top:22px;}
+  .cert{
+    position:relative;overflow:hidden;
+    background:#fff;border-radius:16px;border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    padding:34px 28px 26px;
+    text-align:center;
+  }
+  .cert::before,.cert::after{
+    content:"";position:absolute;width:230px;height:230px;border-radius:30px;
+    background:linear-gradient(135deg,var(--night) 0%,var(--teal) 55%,var(--cyan) 100%);
+    z-index:0;
+  }
+  .cert::before{top:-120px;right:-120px;transform:rotate(18deg);}
+  .cert::after{bottom:-120px;left:-120px;transform:rotate(18deg);}
+  .cert .corner-line{
+    position:absolute;width:260px;height:3px;background:var(--gold);z-index:1;
+  }
+  .cert .corner-line.tl{top:92px;right:-70px;transform:rotate(-26deg);}
+  .cert .corner-line.br{bottom:92px;left:-70px;transform:rotate(-26deg);}
+  .cert-inner{position:relative;z-index:2;}
+
+  .cert-orgs{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    font-family:"Cairo",sans-serif;font-weight:700;font-size:12.5px;color:var(--night);
+    line-height:1.7;margin-bottom:14px;
+  }
+  .cert-mark{display:flex;align-items:center;gap:6px;color:var(--night);font-weight:800;}
+  .cert-mark svg{width:22px;height:22px;}
+  .cert-divider{width:60px;height:2px;background:var(--gold);margin:14px auto;border-radius:2px;}
+
+  .cert h2.title{
+    font-family:"Cairo",sans-serif;font-weight:900;font-size:34px;color:var(--night);
+    margin:4px 0 10px;
+  }
+  .cert .sub{font-size:14px;color:var(--ink-soft);margin:0 0 20px;}
+
+  .cert-name{
+    font-family:"Cairo",sans-serif;font-weight:800;color:var(--night);
+    font-size:28px;margin:4px 0;line-height:1.3;word-wrap:break-word;
+  }
+  .cert-name-underline{width:46%;max-width:260px;height:2px;background:var(--gold);margin:8px auto 18px;border-radius:2px;}
+
+  .cert .line1{font-size:14px;color:var(--ink-soft);margin:0 0 4px;}
+  .cert .line2{font-family:"Cairo",sans-serif;font-weight:800;font-size:19px;color:var(--night);margin:2px 0;}
+  .cert .line3{font-size:13.5px;color:var(--ink-soft);margin:2px 0 14px;}
+  .cert .thanks{font-size:12.5px;color:var(--ink-soft);margin-top:14px;}
+
+  .cert-footer{
+    display:flex;justify-content:space-between;gap:12px;margin-top:22px;
+    padding-top:16px;border-top:1px dashed var(--border);
+    font-size:11.5px;color:var(--ink-soft);
+    position:relative;background:#fff;border-radius:10px;
+    padding-left:10px;padding-right:10px;padding-bottom:4px;
+  }
+  .cert-footer b{display:block;color:var(--night);font-family:"Cairo",sans-serif;font-size:12.5px;margin-bottom:2px;}
+
+  .certActions{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap;}
+  .note{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:10px;line-height:1.8;}
+
+  @media print{
+    .topbar,.page-head,.card > .search-row,.card > .hint,#status,.certActions,.note{display:none !important;}
+    body{background:#fff;}
+    .wrap{padding:0;max-width:none;}
+    .card{border:none;box-shadow:none;padding:0;}
+    .cert{box-shadow:none;}
+  }
+
+  @media (max-width:480px){
+    .card{padding:18px;border-radius:14px;}
+    .cert{padding:26px 16px 20px;}
+    .cert h2.title{font-size:27px;}
+    .cert-name{font-size:21px;}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="mark" viewBox="0 0 120 120">
+    <g fill="currentColor">
+      <rect x="18" y="76" width="16" height="24" rx="3"/>
+      <rect x="42" y="58" width="16" height="42" rx="3"/>
+      <rect x="66" y="38" width="16" height="62" rx="3"/>
+    </g>
+    <polygon fill="#E3A857" points="0,-11 2.7,-3.72 10.46,-3.4 4.37,1.42 6.47,8.9 0,4.6 -6.47,8.9 -4.37,1.42 -10.46,-3.4 -2.7,-3.72" transform="translate(84,22)"/>
+  </symbol>
+</svg>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 120 120"><use href="#mark"/></svg>
+      <span>خطوة خبير</span>
+    </a>
+    <a class="back" href="index.html">
+      العودة للموقع
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="tag">شهادات خطوة خبير</div>
+    <h1>إصدار شهادة الحضور</h1>
+    <p>أدخلي رقم الهوية لإظهار شهادتك جاهزة للطباعة</p>
+  </div>
+
+  <div class="card">
+    <div class="search-row">
+      <input id="idInput" type="text" inputmode="numeric" maxlength="10" placeholder="رقم الهوية (10 أرقام)" autocomplete="off">
+      <button id="searchBtn">إظهار الشهادة</button>
+    </div>
+    <div class="hint">اكتبي رقم الهوية ثم اضغطي إظهار الشهادة، أو Enter.</div>
+    <div id="status"></div>
+
+    <div id="certSection" hidden>
+      <div class="cert">
+        <span class="corner-line tl"></span>
+        <span class="corner-line br"></span>
+        <div class="cert-inner">
+          <div class="cert-orgs">
+            <span class="cert-mark"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>خطوة خبير</span>
+          </div>
+          <div class="line1">الإدارة العامة للتعليم بمنطقة الحدود الشمالية</div>
+          <div class="line1">المتوسطة السابعة بعرعر</div>
+
+          <h2 class="title">شهادة حضور</h2>
+          <p class="sub">تشهد المتوسطة السابعة بعرعر بأن</p>
+
+          <div class="cert-name" id="certName">—</div>
+          <div class="cert-name-underline"></div>
+
+          <div class="line1">قد حضر/ت الورشة التدريبية</div>
+          <div class="line2">من معلم إلى خبير</div>
+          <div class="line3">ضمن مبادرة «خطوة خبير»</div>
+
+          <div class="cert-divider"></div>
+          <div class="thanks">شكرًا لحضوركم ومشاركتكم الفاعلة، مع خالص التمنيات بدوام التوفيق والتميز</div>
+
+          <div class="cert-footer">
+            <div><b>مديرة المدرسة</b>أ. جواهر عبدالرحمن الرويلي</div>
+            <div><b>مقدمة الورشة</b>أ. ريم ناصر الخمسان</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="certActions">
+        <button class="ghost" id="printBtn">طباعة / حفظ PDF</button>
+        <button class="ghost" id="newSearchBtn">بحث عن رقم آخر</button>
+      </div>
+      <div class="note">يمكنك أيضًا الضغط بزر الفأرة الأيمن على الشهادة واختيار "طباعة" أو حفظها كصورة من خيارات المتصفح.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var RECORDS = [{"id": "1082456920", "name": "حصه راضي العنزي"}, {"id": "1016189589", "name": "عهود ملوح هندي العنزي"}, {"id": "1051431101", "name": "الاء عبدالرحمن سالم السلمي"}, {"id": "1097797250", "name": "افنان شاكر رمضان العنزي"}, {"id": "1047820756", "name": "ملاك وادي غازي العنزي"}, {"id": "1088853401", "name": "عبدالعزيز حمد حمود السواط"}, {"id": "1126365673", "name": "تهاني سند الشمري"}, {"id": "1025615269", "name": "نوره عيدان مبرد الصلبي"}, {"id": "1030627044", "name": "منيرة سالم عوض الحربي"}, {"id": "1065421727", "name": "أمل غازي محمد الحمود"}, {"id": "1089708372", "name": "دلال راشد سلطان الشهراني"}, {"id": "1033637404", "name": "ابتهال صالح سليمان الطالب"}, {"id": "1054905326", "name": "نجود محمد عزام الرويلي"}, {"id": "1045789953", "name": "لمياء بنت طليحان الضلعان"}, {"id": "1008641258", "name": "جواهر عبدالرحمن خلف الرويلي"}, {"id": "1005024466", "name": "أماني سليمان قرينيس العنزي"}, {"id": "1070584428", "name": "شروق فايز جهيم الرويلي"}, {"id": "1015091844", "name": "سلطانه خلف هزاع العنزب"}, {"id": "1065020131", "name": "حميده فياض ظاهر العنزي"}, {"id": "1001209210", "name": "وزيره عايد ذعذاع العنزي"}, {"id": "1066434919", "name": "نجوى حامد عابد القرشي"}, {"id": "1018863272", "name": "منال جبان خشان العنزي"}, {"id": "1145266217", "name": "غرام عناد ناصر النصيري"}, {"id": "1023725177", "name": "عنود مرضي حمود مطر العنزي"}, {"id": "1100731031", "name": "أبرار نواف خليفة العنزي"}, {"id": "1007976747", "name": "دلال مريحب حران الرويلي"}, {"id": "1009406784", "name": "سماح محمد حسن ابراهيم"}, {"id": "1029123286", "name": "نفلاء خليف مزود العنزي"}, {"id": "1012053862", "name": "عواطف مفلح عويدات العنزي"}, {"id": "1027060498", "name": "دلال فلاح سلطان زين العين"}, {"id": "1059058618", "name": "مشاعل خلف جابر العنزي"}, {"id": "1013318330", "name": "صالحه عبدالله معتق الحربي"}, {"id": "1066557800", "name": "الجازي ملاح صلف العنزي"}, {"id": "1088020191", "name": "بدور فهد صقر العتيبي"}, {"id": "1019631827", "name": "إيمان رضا جهيم العنزي"}, {"id": "1016252874", "name": "لولوه فارس ضيدان العنزي"}, {"id": "1033918275", "name": "لطيفه عطاالله راضي العنزي"}, {"id": "1083798064", "name": "حكمه جلال جزاع المجلاد"}, {"id": "1018863264", "name": "أمينة بنت جبان بن خشان العنزي"}, {"id": "1028766655", "name": "مشاعل صليبي شطيط العنزي"}, {"id": "1028712717", "name": "سبته  باني فرحان العنزي"}, {"id": "1004337851", "name": "مرام ملوح كليب الرويلي"}, {"id": "1051017638", "name": "خلفه عوض ساير العنزي"}, {"id": "1008924027", "name": "حنان عبدالله فهد العنزي"}, {"id": "1074713825", "name": "وداد الدويك حواس العنزي"}, {"id": "1006390635", "name": "مرام سالم عبيد السليم"}, {"id": "1027060472", "name": "لولوه فلاح سلطان العنزي"}, {"id": "1044816286", "name": "هند سطام سعود العنزي"}, {"id": "1022929218", "name": "حمده رجيان العنزي"}, {"id": "1053468847", "name": "خلود فراج شخير السهلي"}, {"id": "1125836245", "name": "ميعاد عناد غربي العنزي"}, {"id": "1022295107", "name": "مها سليم عساج العنزي"}, {"id": "1025712348", "name": "عيدة رديده خبيتان الصاعدي"}, {"id": "1091340941", "name": "مريم بنت لافي بن جابر العنزي"}, {"id": "1031637430", "name": "ترفه مطلق بدر العنزي"}, {"id": "1015002429", "name": "منوه الراوي نغيمش الصقري"}, {"id": "1003894373", "name": "شعاع طريخم خمخم العنزي"}, {"id": "1055838641", "name": "عنيفه عيد فالح الشمري"}, {"id": "1005473556", "name": "العنود حافظ عايد الشمري"}, {"id": "1074958446", "name": "الجوهره مطيلق طلق الكرشمي"}, {"id": "1077638813", "name": "نظام فهد لافي الرويلي"}, {"id": "1054320690", "name": "مشاعل الاسود عيد العنزي"}, {"id": "1092307238", "name": "أسمآء منيف محمد الحربي"}, {"id": "1052606801", "name": "أشجان عايد العتيبي"}, {"id": "1074776004", "name": "ريما عايض الشهراني"}];
+  var DB = {};
+  RECORDS.forEach(function(r){ DB[r.id] = r.name; });
+
+  var idInput = document.getElementById('idInput');
+  var searchBtn = document.getElementById('searchBtn');
+  var newSearchBtn = document.getElementById('newSearchBtn');
+  var printBtn = document.getElementById('printBtn');
+  var statusEl = document.getElementById('status');
+  var certSection = document.getElementById('certSection');
+  var certName = document.getElementById('certName');
+
+  function normalizeDigits(s){
+    var map = {'٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9',
+               '۰':'0','۱':'1','۲':'2','۳':'3','۴':'4','۵':'5','۶':'6','۷':'7','۸':'8','۹':'9'};
+    return (s||'').split('').map(function(ch){ return map[ch] !== undefined ? map[ch] : ch; }).join('');
+  }
+  function cleanId(raw){ return normalizeDigits(raw).replace(/[^0-9]/g,''); }
+
+  function setStatus(kind, text){
+    statusEl.className = kind ? kind : '';
+    statusEl.innerHTML = kind ? '<span class="dot"></span>' + text : '';
+  }
+
+  function doSearch(){
+    var id = cleanId(idInput.value);
+    if (!id){ setStatus('err', 'اكتبي رقم الهوية أولًا.'); return; }
+    if (id.length !== 10){ setStatus('err', 'رقم الهوية لازم يكون 10 أرقام (أدخلتِ ' + id.length + ').'); return; }
+    var name = DB[id];
+    if (!name){ setStatus('err', 'ما لقيت هذا الرقم في قائمة الحضور.'); certSection.hidden = true; return; }
+    certName.textContent = name;
+    certSection.hidden = false;
+    setStatus('ok', 'تم العثور على: ' + name);
+    certSection.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  searchBtn.addEventListener('click', doSearch);
+  idInput.addEventListener('keydown', function(e){ if (e.key === 'Enter'){ doSearch(); } });
+  idInput.addEventListener('input', function(){ idInput.value = cleanId(idInput.value).slice(0,10); });
+  newSearchBtn.addEventListener('click', function(){
+    certSection.hidden = true; idInput.value = ''; idInput.focus(); setStatus('', '');
+  });
+  printBtn.addEventListener('click', function(){ window.print(); });
+})();
+</script>
+</body>
+</html>
