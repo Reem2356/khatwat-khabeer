@@ -68,6 +68,10 @@
     #certSection{margin:0;}
     .certimg{box-shadow:none;border-radius:0;width:97%;margin:1.5% auto 0;break-inside:avoid;}
   }
+  /* if the browser ignores the landscape page setting, turn the certificate sideways so it still fills the sheet */
+  @media print and (orientation: portrait){
+    .certimg{position:absolute;top:0;left:0;width:99vh;margin:0;transform-origin:top left;transform:translateX(100vw) rotate(90deg);}
+  }
   @media (max-width:480px){ .card{padding:16px;border-radius:14px;} }
 </style>
 </head>
@@ -114,11 +118,12 @@
         <div class="certname" id="certName"></div>
       </div>
       <div class="certActions">
-        <button id="printBtn">طباعة / حفظ PDF</button>
+        <button id="pdfBtn">تحميل PDF</button>
+        <button class="ghost" id="printBtn">طباعة</button>
         <button class="ghost" id="downloadBtn">تحميل كصورة</button>
         <button class="ghost" id="newSearchBtn">بحث عن رقم آخر</button>
       </div>
-      <div class="note">للحفظ بصيغة PDF: زر «طباعة» ثم اختيار «حفظ بتنسيق PDF»، والاتجاه أفقي.</div>
+      <div class="note">ملف PDF ينزل بالعرض (أفقي) بمقاس A4 جاهز للطباعة.</div>
     </div>
   </div>
 </div>
@@ -134,6 +139,7 @@
   var newSearchBtn = document.getElementById('newSearchBtn');
   var printBtn = document.getElementById('printBtn');
   var downloadBtn = document.getElementById('downloadBtn');
+  var pdfBtn = document.getElementById('pdfBtn');
   var statusEl = document.getElementById('status');
   var certSection = document.getElementById('certSection');
   var certName = document.getElementById('certName');
@@ -174,7 +180,8 @@
     certSection.scrollIntoView({behavior:'smooth', block:'start'});
   }
 
-  function downloadImage(){
+  /* draw the certificate with the name onto a canvas, then hand it to cb */
+  function buildCanvas(cb){
     var name = certName.textContent;
     var go = function(){
       var W = certBg.naturalWidth, H = certBg.naturalHeight;
@@ -186,18 +193,49 @@
       ctx.fillStyle = NAME_COLOR;
       do { ctx.font = '800 ' + size + 'px Cairo, sans-serif'; size--; } while (ctx.measureText(name).width > maxW && size > 10);
       ctx.fillText(name, W/2, H*0.452);
-      c.toBlob(function(blob){
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.download = 'شهادة - ' + name + '.png';
-        a.href = url;
-        document.body.appendChild(a); a.click(); a.remove();
-        setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
-      }, 'image/png');
+      cb(c, name);
     };
     if (document.fonts && document.fonts.load){
       document.fonts.load('800 60px Cairo').then(go, go);
     } else { go(); }
+  }
+  function saveBlob(blob, filename){
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.download = filename; a.href = url;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+  }
+  function downloadImage(){
+    buildCanvas(function(c, name){
+      c.toBlob(function(blob){ saveBlob(blob, 'شهادة - ' + name + '.png'); }, 'image/png');
+    });
+  }
+  var jspdfLoading = null;
+  function loadJsPDF(){
+    if (window.jspdf) return Promise.resolve();
+    if (!jspdfLoading){
+      jspdfLoading = new Promise(function(resolve, reject){
+        var sc = document.createElement('script');
+        sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+        sc.onload = resolve; sc.onerror = function(){ jspdfLoading = null; reject(); };
+        document.head.appendChild(sc);
+      });
+    }
+    return jspdfLoading;
+  }
+  function downloadPdf(){
+    pdfBtn.disabled = true;
+    var old = pdfBtn.textContent; pdfBtn.textContent = 'جاري التجهيز…';
+    var done = function(){ pdfBtn.disabled = false; pdfBtn.textContent = old; };
+    loadJsPDF().then(function(){
+      buildCanvas(function(c, name){
+        var pdf = new window.jspdf.jsPDF({orientation:'landscape', unit:'mm', format:'a4'});
+        pdf.addImage(c.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 297, 210);
+        saveBlob(pdf.output('blob'), 'شهادة - ' + name + '.pdf');
+        done();
+      });
+    }, function(){ done(); window.print(); });
   }
 
   searchBtn.addEventListener('click', doSearch);
@@ -208,6 +246,7 @@
   });
   printBtn.addEventListener('click', function(){ window.print(); });
   downloadBtn.addEventListener('click', downloadImage);
+  pdfBtn.addEventListener('click', downloadPdf);
   window.addEventListener('resize', function(){ if (!certSection.hidden) fitName(); });
 })();
 </script>
