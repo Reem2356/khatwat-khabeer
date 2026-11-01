@@ -97,7 +97,7 @@
   <div class="page-head">
     <div class="tag">شهادات خطوة خبير</div>
     <h1>إصدار شهادة الحضور</h1>
-    <p>أدخلي رقم الهوية لإظهار شهادتك جاهزة للطباعة</p>
+    <p>بإدخال رقم الهوية تظهر الشهادة جاهزة للطباعة</p>
   </div>
 
   <div class="card">
@@ -105,7 +105,7 @@
       <input id="idInput" type="text" inputmode="numeric" maxlength="10" placeholder="رقم الهوية (10 أرقام)" autocomplete="off">
       <button id="searchBtn">إظهار الشهادة</button>
     </div>
-    <div class="hint">اكتبي رقم الهوية ثم اضغطي إظهار الشهادة، أو Enter.</div>
+    <div class="hint">بعد كتابة رقم الهوية يكفي الضغط على «إظهار الشهادة» أو Enter.</div>
     <div id="status"></div>
 
     <div id="certSection" hidden>
@@ -118,7 +118,7 @@
         <button class="ghost" id="downloadBtn">تحميل كصورة</button>
         <button class="ghost" id="newSearchBtn">بحث عن رقم آخر</button>
       </div>
-      <div class="note">للحفظ PDF: اضغطي «طباعة» واختاري «حفظ بتنسيق PDF»، والاتجاه أفقي.</div>
+      <div class="note">للحفظ بصيغة PDF: زر «طباعة» ثم اختيار «حفظ بتنسيق PDF»، والاتجاه أفقي.</div>
     </div>
   </div>
 </div>
@@ -162,10 +162,10 @@
 
   function doSearch(){
     var id = cleanId(idInput.value);
-    if (!id){ setStatus('err', 'اكتبي رقم الهوية أولًا.'); return; }
-    if (id.length !== 10){ setStatus('err', 'رقم الهوية لازم يكون 10 أرقام (أدخلتِ ' + id.length + ').'); return; }
+    if (!id){ setStatus('err', 'يُرجى كتابة رقم الهوية أولًا.'); return; }
+    if (id.length !== 10){ setStatus('err', 'رقم الهوية يتكوّن من 10 أرقام، والمكتوب ' + id.length + ' فقط.'); return; }
     var name = DB[id];
-    if (!name){ setStatus('err', 'ما لقيت هذا الرقم في قائمة الحضور.'); certSection.hidden = true; return; }
+    if (!name){ setStatus('err', 'هذا الرقم غير موجود في قائمة الحضور.'); certSection.hidden = true; return; }
     certName.textContent = name;
     certSection.hidden = false;
     setStatus('ok', 'تم العثور على: ' + name);
