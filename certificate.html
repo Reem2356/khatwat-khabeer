@@ -52,17 +52,22 @@
   .certimg{position:relative;width:100%;container-type:inline-size;border-radius:6px;overflow:hidden;
     box-shadow:0 10px 30px -12px rgba(0,0,0,.3);line-height:0;}
   .certimg img{display:block;width:100%;height:auto;}
-  .certname{position:absolute;left:19%;right:19%;top:45.2%;transform:translateY(-50%);
+  .certname{position:absolute;left:19%;right:19%;top:var(--ny,45.2%);transform:translateY(-50%);
     text-align:center;line-height:1.25;font-family:"Cairo",sans-serif;font-weight:800;color:var(--name);
     font-size:4.3cqw;white-space:nowrap;}
 
+  .certTabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:0 0 14px;}
+  .certTabs button{direction:rtl;unicode-bidi:isolate;background:var(--bg);color:var(--ink-soft);border:1.5px solid var(--border);padding:10px 18px;font-size:14.5px;}
+  .certTabs button small{display:block;font-family:"Tajawal",sans-serif;font-weight:500;font-size:12px;opacity:.85;margin-top:2px;}
+  .certTabs button.on{background:var(--night);color:#fff;border-color:var(--night);}
+  .certTabs.single button{cursor:default;}
   .certActions{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap;}
   .note{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:10px;line-height:1.8;}
 
   @page{size:A4 landscape;margin:0;}
   @media print{
     html,body{background:#fff;min-height:0;height:auto;}
-    .topbar,.page-head,.search-row,.hint,#status,.certActions,.note{display:none !important;}
+    .topbar,.page-head,.search-row,.hint,#status,.certActions,.note,.certTabs{display:none !important;}
     .wrap{padding:0;max-width:none;}
     .card{border:none;box-shadow:none;padding:0;background:none;}
     #certSection{margin:0;}
@@ -101,18 +106,19 @@
   <div class="page-head">
     <div class="tag">شهادات خطوة خبير</div>
     <h1>إصدار شهادة الحضور</h1>
-    <p>بإدخال رقم الهوية تظهر الشهادة جاهزة للطباعة</p>
+    <p>بإدخال رقم الهوية تظهر شهاداتك لكل ورشة حضرتها، جاهزة للطباعة</p>
   </div>
 
   <div class="card">
     <div class="search-row">
       <input id="idInput" type="text" inputmode="numeric" maxlength="10" placeholder="رقم الهوية (10 أرقام)" autocomplete="off">
-      <button id="searchBtn">إظهار الشهادة</button>
+      <button id="searchBtn">إظهار الشهادات</button>
     </div>
-    <div class="hint">بعد كتابة رقم الهوية يكفي الضغط على «إظهار الشهادة» أو Enter.</div>
+    <div class="hint">بعد كتابة رقم الهوية يكفي الضغط على «إظهار الشهادات» أو Enter.</div>
     <div id="status"></div>
 
     <div id="certSection" hidden>
+      <div class="certTabs" id="certTabs"></div>
       <div class="certimg">
         <img id="certBg" src="certificate-bg.webp" alt="شهادة حضور">
         <div class="certname" id="certName"></div>
@@ -130,9 +136,15 @@
 
 <script>
 (function(){
-  var RECORDS = [{"id": "1082456920", "name": "حصه راضي العنزي"}, {"id": "1016189589", "name": "عهود ملوح هندي العنزي"}, {"id": "1052431101", "name": "الاء عبدالرحمن سالم السلمي"}, {"id": "1097797250", "name": "افنان شاكر رمضان العنزي"}, {"id": "1047820756", "name": "ملاك وادي غازي العنزي"}, {"id": "1088853401", "name": "عبدالعزيز حمد حمود السواط"}, {"id": "1126365673", "name": "تهاني سند الشمري"}, {"id": "1025615269", "name": "نوره عيدان مبرد الصلبي"}, {"id": "1030627044", "name": "منيرة سالم عوض الحربي"}, {"id": "1065421727", "name": "أمل غازي محمد الحمود"}, {"id": "1089708372", "name": "دلال راشد سلطان الشهراني"}, {"id": "1033637404", "name": "ابتهال صالح سليمان الطالب"}, {"id": "1054905326", "name": "نجود محمد عزام الرويلي"}, {"id": "1045789953", "name": "لمياء بنت طليحان الضلعان"}, {"id": "1008641258", "name": "جواهر عبدالرحمن خلف الرويلي"}, {"id": "1005024466", "name": "أماني سليمان قرينيس العنزي"}, {"id": "1070584428", "name": "شروق فايز جهيم الرويلي"}, {"id": "1015091844", "name": "سلطانه خلف هزاع العنزب"}, {"id": "1065920131", "name": "حميده فياض ظاهر العنزي"}, {"id": "1001209210", "name": "وزيره عايد ذعذاع العنزي"}, {"id": "1066434919", "name": "نجوى حامد عابد القرشي"}, {"id": "1018863272", "name": "منال جبان خشان العنزي"}, {"id": "1145266217", "name": "غرام عناد ناصر النصيري"}, {"id": "1023725177", "name": "عنود مرضي حمود مطر العنزي"}, {"id": "1100731031", "name": "أبرار نواف خليفة العنزي"}, {"id": "1007976747", "name": "دلال مريحب حران الرويلي"}, {"id": "1009406784", "name": "سماح محمد حسن ابراهيم"}, {"id": "1029123286", "name": "نفلاء خليف مزود العنزي"}, {"id": "1012053862", "name": "عواطف مفلح عويدات العنزي"}, {"id": "1027060498", "name": "دلال فلاح سلطان زين العين"}, {"id": "1059058618", "name": "مشاعل خلف جابر العنزي"}, {"id": "1013318330", "name": "صالحه عبدالله معتق الحربي"}, {"id": "1066557800", "name": "الجازي ملاح صلف العنزي"}, {"id": "1088020191", "name": "بدور فهد صقر العتيبي"}, {"id": "1019631827", "name": "إيمان رضا جهيم العنزي"}, {"id": "1016252874", "name": "لولوه فارس ضيدان العنزي"}, {"id": "1033918275", "name": "لطيفه عطاالله راضي العنزي"}, {"id": "1083798064", "name": "حكمه جلال جزاع المجلاد"}, {"id": "1018863264", "name": "أمينة بنت جبان بن خشان العنزي"}, {"id": "1028766655", "name": "مشاعل صليبي شطيط العنزي"}, {"id": "1028712717", "name": "سبته  باني فرحان العنزي"}, {"id": "1004337851", "name": "مرام ملوح كليب الرويلي"}, {"id": "1051017638", "name": "خلفه عوض ساير العنزي"}, {"id": "1008924027", "name": "حنان عبدالله فهد العنزي"}, {"id": "1074713825", "name": "وداد الدويك حواس العنزي"}, {"id": "1006390635", "name": "مرام سالم عبيد السليم"}, {"id": "1027060472", "name": "لولوه فلاح سلطان العنزي"}, {"id": "1044816286", "name": "هند سطام سعود العنزي"}, {"id": "1022929218", "name": "حمده رجيان العنزي"}, {"id": "1053468847", "name": "خلود فراج شخير السهلي"}, {"id": "1125836245", "name": "ميعاد عناد غربي العنزي"}, {"id": "1022295107", "name": "مها سليم عساج العنزي"}, {"id": "1025712348", "name": "عيدة رديده خبيتان الصاعدي"}, {"id": "1091340941", "name": "مريم بنت لافي بن جابر العنزي"}, {"id": "1031637430", "name": "ترفه مطلق بدر العنزي"}, {"id": "1015002429", "name": "منوه الراوي نغيمش الصقري"}, {"id": "1003894373", "name": "شعاع طريخم خمخم العنزي"}, {"id": "1055838641", "name": "عنيفه عيد فالح الشمري"}, {"id": "1005473556", "name": "العنود حافظ عايد الشمري"}, {"id": "1074958446", "name": "الجوهره مطيلق طلق الكرشمي"}, {"id": "1077638813", "name": "نظام فهد لافي الرويلي"}, {"id": "1054320690", "name": "مشاعل الاسود عيد العنزي"}, {"id": "1092307238", "name": "أسمآء منيف محمد الحربي"}, {"id": "1052606801", "name": "أشجان عايد العتيبي"}, {"id": "1074776004", "name": "ريما عايض الشهراني"}];
-  var DB = {};
-  RECORDS.forEach(function(r){ DB[r.id] = r.name; });
+  /* one entry per workshop — add the next workshop here */
+  var CERTS = [
+    { title: 'الورشة الأولى', sub: 'من معلم إلى خبير', bg: 'certificate-bg.webp', y: 0.452, file: 'الورشة الأولى',
+      records: [{"id": "1082456920", "name": "حصه راضي العنزي"}, {"id": "1016189589", "name": "عهود ملوح هندي العنزي"}, {"id": "1052431101", "name": "الاء عبدالرحمن سالم السلمي"}, {"id": "1097797250", "name": "افنان شاكر رمضان العنزي"}, {"id": "1047820756", "name": "ملاك وادي غازي العنزي"}, {"id": "1088853401", "name": "عبدالعزيز حمد حمود السواط"}, {"id": "1126365673", "name": "تهاني سند الشمري"}, {"id": "1025615269", "name": "نوره عيدان مبرد الصلبي"}, {"id": "1030627044", "name": "منيرة سالم عوض الحربي"}, {"id": "1065421727", "name": "أمل غازي محمد الحمود"}, {"id": "1089708372", "name": "دلال راشد سلطان الشهراني"}, {"id": "1033637404", "name": "ابتهال صالح سليمان الطالب"}, {"id": "1054905326", "name": "نجود محمد عزام الرويلي"}, {"id": "1045789953", "name": "لمياء بنت طليحان الضلعان"}, {"id": "1008641258", "name": "جواهر عبدالرحمن خلف الرويلي"}, {"id": "1005024466", "name": "أماني سليمان قرينيس العنزي"}, {"id": "1070584428", "name": "شروق فايز جهيم الرويلي"}, {"id": "1015091844", "name": "سلطانه خلف هزاع العنزب"}, {"id": "1065920131", "name": "حميده فياض ظاهر العنزي"}, {"id": "1001209210", "name": "وزيره عايد ذعذاع العنزي"}, {"id": "1066434919", "name": "نجوى حامد عابد القرشي"}, {"id": "1018863272", "name": "منال جبان خشان العنزي"}, {"id": "1145266217", "name": "غرام عناد ناصر النصيري"}, {"id": "1023725177", "name": "عنود مرضي حمود مطر العنزي"}, {"id": "1100731031", "name": "أبرار نواف خليفة العنزي"}, {"id": "1007976747", "name": "دلال مريحب حران الرويلي"}, {"id": "1009406784", "name": "سماح محمد حسن ابراهيم"}, {"id": "1029123286", "name": "نفلاء خليف مزود العنزي"}, {"id": "1012053862", "name": "عواطف مفلح عويدات العنزي"}, {"id": "1027060498", "name": "دلال فلاح سلطان زين العين"}, {"id": "1059058618", "name": "مشاعل خلف جابر العنزي"}, {"id": "1013318330", "name": "صالحه عبدالله معتق الحربي"}, {"id": "1066557800", "name": "الجازي ملاح صلف العنزي"}, {"id": "1088020191", "name": "بدور فهد صقر العتيبي"}, {"id": "1019631827", "name": "إيمان رضا جهيم العنزي"}, {"id": "1016252874", "name": "لولوه فارس ضيدان العنزي"}, {"id": "1033918275", "name": "لطيفه عطاالله راضي العنزي"}, {"id": "1083798064", "name": "حكمه جلال جزاع المجلاد"}, {"id": "1018863264", "name": "أمينة بنت جبان بن خشان العنزي"}, {"id": "1028766655", "name": "مشاعل صليبي شطيط العنزي"}, {"id": "1028712717", "name": "سبته  باني فرحان العنزي"}, {"id": "1004337851", "name": "مرام ملوح كليب الرويلي"}, {"id": "1051017638", "name": "خلفه عوض ساير العنزي"}, {"id": "1008924027", "name": "حنان عبدالله فهد العنزي"}, {"id": "1074713825", "name": "وداد الدويك حواس العنزي"}, {"id": "1006390635", "name": "مرام سالم عبيد السليم"}, {"id": "1027060472", "name": "لولوه فلاح سلطان العنزي"}, {"id": "1044816286", "name": "هند سطام سعود العنزي"}, {"id": "1022929218", "name": "حمده رجيان العنزي"}, {"id": "1053468847", "name": "خلود فراج شخير السهلي"}, {"id": "1125836245", "name": "ميعاد عناد غربي العنزي"}, {"id": "1022295107", "name": "مها سليم عساج العنزي"}, {"id": "1025712348", "name": "عيدة رديده خبيتان الصاعدي"}, {"id": "1091340941", "name": "مريم بنت لافي بن جابر العنزي"}, {"id": "1031637430", "name": "ترفه مطلق بدر العنزي"}, {"id": "1015002429", "name": "منوه الراوي نغيمش الصقري"}, {"id": "1003894373", "name": "شعاع طريخم خمخم العنزي"}, {"id": "1055838641", "name": "عنيفه عيد فالح الشمري"}, {"id": "1005473556", "name": "العنود حافظ عايد الشمري"}, {"id": "1074958446", "name": "الجوهره مطيلق طلق الكرشمي"}, {"id": "1077638813", "name": "نظام فهد لافي الرويلي"}, {"id": "1054320690", "name": "مشاعل الاسود عيد العنزي"}, {"id": "1092307238", "name": "أسمآء منيف محمد الحربي"}, {"id": "1052606801", "name": "أشجان عايد العتيبي"}, {"id": "1074776004", "name": "ريما عايض الشهراني"}] },
+    { title: 'الورشة الثانية', sub: 'Copilot مساعدك الذكي', bg: 'certificate-bg-2.webp', y: 0.468, file: 'الورشة الثانية',
+      records: [{"id": "1098172289", "name": "طلال فهد محمد الشريف"}, {"id": "1070584428", "name": "شروق فايز جهيم الرويلي"}, {"id": "1088853401", "name": "عبدالعزيز حمد حمود السواط"}, {"id": "1061797401", "name": "نادية صباح العنزي"}, {"id": "1008641258", "name": "جواهر عبدالرحمن الرويلي"}, {"id": "1018383256", "name": "عقيله غردق بداح العنزي"}, {"id": "1047158611", "name": "حمده عوض صهيبان الشراري"}, {"id": "1003391107", "name": "سارا رمضان العنزي"}, {"id": "1076711470", "name": "وعد تركي عبدالله الصالح"}, {"id": "1065920131", "name": "حميده فياض ظاهر العنزي"}, {"id": "1023725177", "name": "عنود مرضي حمود مطر العنزي"}, {"id": "1145266217", "name": "غرام عناد ناصر النصيري"}, {"id": "1033637404", "name": "ابتهال صالح سليمان الطالب"}, {"id": "1017466085", "name": "خزنه نزال زرم السويلمي"}, {"id": "1029226618", "name": "وضحاء فرحان مناحي البكر"}] }
+  ];
+  CERTS.forEach(function(c){ c.db = {}; c.records.forEach(function(r){ c.db[r.id] = r.name; }); });
+  var found = [], cur = null;
 
   var idInput = document.getElementById('idInput');
   var searchBtn = document.getElementById('searchBtn');
@@ -144,6 +156,7 @@
   var certSection = document.getElementById('certSection');
   var certName = document.getElementById('certName');
   var certBg = document.getElementById('certBg');
+  var certTabs = document.getElementById('certTabs');
   var NAME_COLOR = '#0B3A4C';
 
   function normalizeDigits(s){
@@ -170,20 +183,38 @@
     var id = cleanId(idInput.value);
     if (!id){ setStatus('err', 'يُرجى كتابة رقم الهوية أولًا.'); return; }
     if (id.length !== 10){ setStatus('err', 'رقم الهوية يتكوّن من 10 أرقام، والمكتوب ' + id.length + ' فقط.'); return; }
-    var name = DB[id];
-    if (!name){ setStatus('err', 'هذا الرقم غير موجود في قائمة الحضور.'); certSection.hidden = true; return; }
-    certName.textContent = name;
+    found = CERTS.filter(function(c){ return c.db[id]; }).map(function(c){ return { c: c, name: c.db[id] }; });
+    if (!found.length){ setStatus('err', 'هذا الرقم غير موجود في قوائم الحضور.'); certSection.hidden = true; return; }
+    certTabs.innerHTML = '';
+    certTabs.className = 'certTabs' + (found.length === 1 ? ' single' : '');
+    found.forEach(function(f, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.innerHTML = f.c.title + '<small>' + f.c.sub + '</small>';
+      b.addEventListener('click', function(){ showCert(i); });
+      certTabs.appendChild(b);
+    });
     certSection.hidden = false;
-    setStatus('ok', 'تم العثور على: ' + name);
+    setStatus('ok', 'تم العثور على: ' + found[found.length - 1].name +
+      (found.length > 1 ? ' — لديك ' + (found.length === 2 ? 'شهادتان' : found.length + ' شهادات') : ''));
+    showCert(found.length - 1);
+    certSection.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  function showCert(i){
+    cur = found[i];
+    Array.prototype.forEach.call(certTabs.children, function(b, j){ b.className = j === i ? 'on' : ''; });
+    if (certBg.getAttribute('src') !== cur.c.bg) certBg.src = cur.c.bg;
+    certBg.alt = 'شهادة حضور ' + cur.c.title;
+    certName.style.setProperty('--ny', (cur.c.y * 100) + '%');
+    certName.textContent = cur.name;
     requestAnimationFrame(fitName);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitName);
-    certSection.scrollIntoView({behavior:'smooth', block:'start'});
   }
 
   /* draw the certificate with the name onto a canvas, then hand it to cb */
   function buildCanvas(cb){
-    var name = certName.textContent;
-    var go = function(){
+    var name = cur.name, y = cur.c.y, label = cur.c.file;
+    var draw = function(){
       var W = certBg.naturalWidth, H = certBg.naturalHeight;
       var c = document.createElement('canvas'); c.width = W; c.height = H;
       var ctx = c.getContext('2d');
@@ -192,8 +223,12 @@
       ctx.direction = 'rtl'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillStyle = NAME_COLOR;
       do { ctx.font = '800 ' + size + 'px Cairo, sans-serif'; size--; } while (ctx.measureText(name).width > maxW && size > 10);
-      ctx.fillText(name, W/2, H*0.452);
-      cb(c, name);
+      ctx.fillText(name, W/2, H*y);
+      cb(c, name + ' - ' + label);
+    };
+    var go = function(){
+      if (certBg.complete && certBg.naturalWidth) draw();
+      else certBg.addEventListener('load', draw, { once: true });
     };
     if (document.fonts && document.fonts.load){
       document.fonts.load('800 60px Cairo').then(go, go);
