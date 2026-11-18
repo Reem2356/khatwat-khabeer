@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>طريقة التقديم · خطوة خبير</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="دليل التقديم على شارة Microsoft Elevate Educator خطوة بخطوة: Explorer ثم Expert، مع قائمة تحقق تحفظ تقدّمك.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F7F8; --surface:#FFFFFF; --surface-2:#EAF1F3; --ink:#0F262B; --ink-soft:#516468;
+    --cyan:#2FADE0; --teal:#238CAA; --tealgreen:#129E93; --purple:#7257A4; --border:#DCE6E9;
+    --night:#003845; --night-2:#0B5164; --gold:#E3A857; --warn-bg:#FFF4E2; --warn-ink:#7A4E0E;
+    --ok-bg:#E7F7F5; --shadow:0 18px 40px -22px rgba(6,40,46,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#07191E; --surface:#0F272D; --surface-2:#123138; --ink:#E9F3F4; --ink-soft:#9FB9BD;
+      --cyan:#5DC4EE; --teal:#57ACC9; --tealgreen:#3FCBBE; --purple:#A78FD1; --border:#1C3B42;
+      --night:#02141A; --night-2:#083240; --gold:#F0A857; --warn-bg:#2E2412; --warn-ink:#F3CF95;
+      --ok-bg:#0E302D; --shadow:0 18px 44px -20px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#07191E; --surface:#0F272D; --surface-2:#123138; --ink:#E9F3F4; --ink-soft:#9FB9BD;
+    --cyan:#5DC4EE; --teal:#57ACC9; --tealgreen:#3FCBBE; --purple:#A78FD1; --border:#1C3B42;
+    --night:#02141A; --night-2:#083240; --gold:#F0A857; --warn-bg:#2E2412; --warn-ink:#F3CF95;
+    --ok-bg:#0E302D; --shadow:0 18px 44px -20px rgba(0,0,0,.6);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg);color:var(--ink);font-family:"Tajawal",sans-serif;direction:rtl;text-align:right;min-height:100vh;line-height:1.75;}
+  a{color:inherit;}
+  .topbar{background:var(--night);position:sticky;top:0;z-index:20;}
+  .topbar-inner{max-width:1000px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .brand{display:flex;align-items:center;gap:10px;color:#EAF6F8;font-family:"Cairo",sans-serif;font-weight:800;font-size:17px;text-decoration:none;}
+  .brand svg{width:26px;height:26px;color:#EAF6F8;}
+  .back{display:inline-flex;align-items:center;gap:6px;color:#CFE9EF;font-family:"Cairo",sans-serif;font-weight:700;font-size:13.5px;text-decoration:none;}
+  .back svg{width:16px;height:16px;}
+
+  .wrap{max-width:860px;margin:0 auto;padding:34px 20px 70px;}
+  .page-head{text-align:center;margin-bottom:22px;}
+  .page-head .tag{font-family:"Cairo",sans-serif;font-size:12.5px;color:var(--teal);font-weight:700;}
+  .page-head h1{font-family:"Cairo",sans-serif;font-weight:800;font-size:27px;line-height:1.35;margin:6px 0 8px;}
+  .page-head p{color:var(--ink-soft);font-size:15px;margin:0 auto;max-width:620px;}
+
+  /* quick links */
+  .links{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0 18px;}
+  .lk{display:flex;align-items:center;gap:14px;text-decoration:none;background:var(--surface);border:1px solid var(--border);
+    border-radius:16px;padding:16px 18px;box-shadow:var(--shadow);transition:transform .12s ease,border-color .12s ease;}
+  .lk:hover{transform:translateY(-2px);border-color:var(--teal);}
+  .lk .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none;color:#fff;}
+  .lk .ic svg{width:22px;height:22px;}
+  .lk b{display:block;font-family:"Cairo",sans-serif;font-weight:800;font-size:15.5px;line-height:1.4;}
+  .lk small{display:block;color:var(--ink-soft);font-size:12.5px;direction:ltr;text-align:right;overflow-wrap:anywhere;}
+  .lk .go{margin-inline-start:auto;color:var(--teal);flex:none;}
+  .lk .go svg{width:18px;height:18px;}
+
+  /* progress */
+  .progress{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow);
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;position:sticky;top:62px;z-index:10;}
+  .progress .txt{font-family:"Cairo",sans-serif;font-weight:800;font-size:15px;white-space:nowrap;}
+  .progress .txt span{color:var(--teal);}
+  .bar{flex:1 1 220px;height:10px;background:var(--surface-2);border-radius:99px;overflow:hidden;}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--tealgreen),var(--cyan));border-radius:99px;transition:width .4s ease;}
+  .reset{font-family:"Cairo",sans-serif;font-weight:700;font-size:12.5px;color:var(--ink-soft);background:none;border:none;cursor:pointer;text-decoration:underline;padding:4px;}
+
+  /* stages */
+  .stage{display:flex;align-items:center;gap:12px;margin:34px 0 14px;}
+  .stage .badge{font-family:"Cairo",sans-serif;font-weight:800;font-size:12px;color:#fff;padding:4px 12px;border-radius:99px;white-space:nowrap;flex:none;}
+  .stage h2{font-family:"Cairo",sans-serif;font-weight:800;font-size:20px;margin:0;line-height:1.4;}
+  .stage p{margin:0;color:var(--ink-soft);font-size:13.5px;}
+
+  /* step cards */
+  .step{background:var(--surface);border:1px solid var(--border);border-radius:18px;margin-bottom:12px;box-shadow:var(--shadow);
+    transition:opacity .2s ease,border-color .2s ease;overflow:hidden;}
+  .step-h{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;user-select:none;}
+  .num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex:none;font-family:"Cairo",sans-serif;font-weight:800;
+    font-size:16px;color:#fff;background:var(--night-2);}
+  .step-h .t{flex:1;min-width:0;}
+  .step-h h3{font-family:"Cairo",sans-serif;font-weight:800;font-size:16.5px;margin:0;line-height:1.45;}
+  .step-h .sub{color:var(--ink-soft);font-size:13px;}
+  .pill{font-family:"Cairo",sans-serif;font-weight:700;font-size:11.5px;padding:3px 10px;border-radius:99px;flex:none;white-space:nowrap;}
+  .step-b{padding:0 18px 18px 18px;display:none;}
+  .step.open .step-b{display:block;}
+  .step-b > p{margin:0 0 10px;}
+  ol.how{margin:6px 0 12px;padding-inline-start:22px;}
+  ol.how li{margin:4px 0;}
+  .kbd{font-family:"Cairo",sans-serif;font-weight:700;font-size:.92em;background:var(--surface-2);border:1px solid var(--border);border-radius:7px;padding:1px 7px;white-space:nowrap;}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;margin:8px 0 12px;padding:12px 14px;background:var(--surface-2);border-radius:12px;font-size:14px;}
+  .fields div::before{content:"• ";color:var(--teal);font-weight:800;}
+  .tip{border-radius:12px;padding:10px 14px;font-size:13.8px;margin:10px 0;}
+  .tip.warn{background:var(--warn-bg);color:var(--warn-ink);}
+  .tip.ok{background:var(--ok-bg);}
+  .tip b{font-family:"Cairo",sans-serif;}
+  .ltr{direction:ltr;unicode-bidi:isolate;}
+  .open-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:"Cairo",sans-serif;font-weight:700;font-size:14px;
+    border:1.5px solid var(--teal);color:var(--teal);border-radius:11px;padding:8px 14px;margin:4px 0 8px 8px;}
+  .open-link svg{width:16px;height:16px;}
+  .open-link:hover{background:var(--surface-2);}
+
+  .subs{list-style:none;margin:10px 0 12px;padding:0;display:grid;gap:8px;}
+  .subs label{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;cursor:pointer;background:var(--bg);}
+  .subs input{width:20px;height:20px;accent-color:var(--tealgreen);flex:none;margin:0;}
+  .subs .u{font-size:12px;color:var(--ink-soft);display:block;}
+  .subs label.done{border-color:var(--tealgreen);}
+
+  .act{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;}
+  .done-btn{font-family:"Cairo",sans-serif;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:12px 22px;cursor:pointer;
+    background:linear-gradient(180deg,#4DC2EE,#2FADE0);color:#00303F;}
+  .done-btn:disabled{opacity:.45;cursor:not-allowed;}
+  .act .need{font-size:12.5px;color:var(--ink-soft);}
+  .undo{font-family:"Cairo",sans-serif;font-weight:700;font-size:13px;color:var(--ink-soft);background:none;border:none;cursor:pointer;text-decoration:underline;padding:0;}
+
+  /* states */
+  .step.locked{opacity:.55;}
+  .step.locked .step-h{cursor:not-allowed;}
+  .step.locked .num{background:var(--border);color:var(--ink-soft);}
+  .step.locked .pill{background:var(--surface-2);color:var(--ink-soft);}
+  .step.current{border-color:var(--teal);border-width:2px;}
+  .step.current .num{background:var(--teal);}
+  .step.current .pill{background:var(--teal);color:#fff;}
+  .step.done .num{background:var(--tealgreen);}
+  .step.done .pill{background:var(--ok-bg);color:var(--tealgreen);}
+
+  .finish{display:none;text-align:center;background:var(--night);color:#EAF6F8;border-radius:20px;padding:30px 22px;margin-top:22px;}
+  .finish.show{display:block;}
+  .finish h2{font-family:"Cairo",sans-serif;font-weight:800;font-size:23px;margin:6px 0;}
+  .finish p{color:#B9D4D9;margin:0 auto 14px;max-width:560px;}
+  .finish a{display:inline-block;margin:4px;text-decoration:none;font-family:"Cairo",sans-serif;font-weight:700;font-size:14px;
+    padding:10px 18px;border-radius:12px;background:linear-gradient(180deg,#4DC2EE,#2FADE0);color:#00303F;}
+  .finish a.g{background:transparent;color:#EAF6F8;border:1.5px solid rgba(234,246,248,.4);}
+  .foot{text-align:center;color:var(--ink-soft);font-size:12.5px;margin-top:30px;}
+
+  @media (max-width:640px){
+    .links{grid-template-columns:1fr;}
+    .fields{grid-template-columns:1fr;}
+    .page-head h1{font-size:23px;}
+    .step-h{padding:14px;gap:12px;}
+    .step-b{padding:0 14px 16px;}
+    .progress{position:static;flex-wrap:nowrap;gap:10px;padding:12px 14px;}
+    .progress .txt{font-size:14px;}
+    .bar{flex:1 1 60px;min-width:60px;}
+    .step-h .pill{display:none;}
+    .step-h h3{font-size:15.5px;}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="mark" viewBox="0 0 120 120">
+    <g fill="currentColor">
+      <rect x="18" y="76" width="16" height="24" rx="3"/>
+      <rect x="42" y="58" width="16" height="42" rx="3"/>
+      <rect x="66" y="38" width="16" height="62" rx="3"/>
+    </g>
+    <polygon fill="#E3A857" points="0,-11 2.7,-3.72 10.46,-3.4 4.37,1.42 6.47,8.9 0,4.6 -6.47,8.9 -4.37,1.42 -10.46,-3.4 -2.7,-3.72" transform="translate(84,22)"/>
+  </symbol>
+  <symbol id="ext" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></g></symbol>
+</svg>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><svg viewBox="0 0 120 120"><use href="#mark"/></svg><span>خطوة خبير</span></a>
+    <a class="back" href="index.html">العودة للموقع
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="tag">دليل التقديم · 2026–2027</div>
+    <h1>طريقة التقديم على شارة الخبير خطوة بخطوة</h1>
+    <p>قائمة تحقق مرتبة: تبدأ بشارة Explorer ثم Expert. كل خطوة تفتح التي بعدها لما تضغط «أنجزت هذه الخطوة»، وتقدّمك ينحفظ على جهازك.</p>
+  </div>
+
+  <div class="links">
+    <a class="lk" href="https://elevateforeducators.microsoft.com/" target="_blank" rel="noopener">
+      <span class="ic" style="background:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span>
+      <span><b>رابط التقديم الأساسي</b><small>elevateforeducators.microsoft.com</small></span>
+      <span class="go"><svg><use href="#ext"/></svg></span>
+    </a>
+    <a class="lk" href="https://www.credly.com/earner/dashboard/home" target="_blank" rel="noopener">
+      <span class="ic" style="background:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 21l5-2.6L17 21l-1.5-7"/></svg></span>
+      <span><b>Credly · استلام الشارات</b><small>credly.com/earner/dashboard/home</small></span>
+      <span class="go"><svg><use href="#ext"/></svg></span>
+    </a>
+  </div>
+
+  <div class="progress" aria-live="polite">
+    <div class="txt">تقدّمك: <span id="pcount">0</span> من <span id="ptotal">0</span></div>
+    <div class="bar"><i id="pbar"></i></div>
+    <button class="reset" id="resetBtn" type="button">البدء من جديد</button>
+  </div>
+
+  <div id="steps"></div>
+
+  <div class="finish" id="finish">
+    <svg viewBox="0 0 120 120" style="width:54px;height:54px;color:#EAF6F8"><use href="#mark"/></svg>
+    <h2>مبروك! أنهيت كل الخطوات</h2>
+    <p>أرسلت طلب Expert. تابع الإشعارات في صفحة «تقدّمي» وبريدك، ولما تُعتمد الشارة اقبلها من Credly وشاركها.</p>
+    <a href="https://www.credly.com/earner/dashboard/home" target="_blank" rel="noopener">فتح Credly</a>
+    <a class="g" href="certificate.html">شهادات خطوة خبير</a>
+  </div>
+
+  <div class="foot">فكرة وتنفيذ: ريم ناصر الخمسان · المتوسطة السابعة بعرعر · #خطوة_خبير</div>
+</div>
+
+<script>
+(function(){
+  var ELEVATE = 'https://elevateforeducators.microsoft.com/';
+  var CREDLY  = 'https://www.credly.com/earner/dashboard/home';
+  function L(href, label){ return '<a class="open-link" href="'+href+'" target="_blank" rel="noopener">'+label+'<svg><use href="#ext"/></svg></a>'; }
+  function K(t){ return '<span class="kbd">'+t+'</span>'; }
+
+  var STAGES = {
+    A: { badge:'المرحلة الأولى', color:'var(--tealgreen)', title:'شارة Explorer', sub:'متاحة طوال السنة، وهي شرط قبل التقديم على Expert.' },
+    B: { badge:'المرحلة الثانية', color:'var(--purple)', title:'شارة Expert', sub:'الدورات الست ثم نموذج الطلب.' }
+  };
+
+  var STEPS = [
+    { id:'login', stage:'A', title:'ادخل منصة Microsoft Elevate for Educators', sub:'تسجيل الدخول بحساب Microsoft',
+      body:
+        '<ol class="how">'+
+        '<li>افتح رابط التقديم الأساسي.</li>'+
+        '<li>سجّل الدخول ببريدك التعليمي (حساب Microsoft 365 حق المدرسة).</li>'+
+        '<li>غيّر اللغة من زر '+K('اللغة: العربية')+' أعلى الصفحة إذا احتجت.</li>'+
+        '<li>تظهر لك صفحة '+K('مرحبًا، ...')+' وفيها بطاقة «ابدأ التعلّم في مستوى Explorer».</li>'+
+        '</ol>'+ L(ELEVATE,'فتح منصة التقديم') +
+        '<div class="tip warn"><b>مهم:</b> أضف العنوان <span class="ltr">noreply@elevateforeducators.com</span> لقائمة المرسلين الآمنين، عشان توصلك رسائل البرنامج وما تروح للبريد المزعج.</div>' },
+
+    { id:'explorer-units', stage:'A', title:'شاهد وحدات Explorer الثلاث', sub:'ابدأ التعلّم ← ٣ وحدات قصيرة',
+      body:
+        '<p>من الصفحة الرئيسية اضغط '+K('ابدأ التعلّم')+'، وبعدها '+K('شاهد الآن')+' لكل وحدة. علّم الوحدة هنا بعد ما تظهر لها «مكتمل» في المنصة:</p>',
+      subs:[
+        ['ما هو الذكاء الاصطناعي حقًّا؟','Explorer: الوحدة ١ من ٣'],
+        ['ممارسة عملية مع Microsoft Copilot - مستوى Explorer','Explorer: الوحدة ٢ من ٣'],
+        ['بناء ممارسة تأملية للذكاء الاصطناعي مع مرور الوقت','Explorer: الوحدة ٣ من ٣']
+      ],
+      after:'<div class="tip ok">إذا كنت أكملت تدريبًا مكافئًا من قبل، تقدر تستخدم '+K('تطبيق رمز الإنجاز')+' أو '+K('إجراء اختبار المعرفة')+' بدل مشاهدة الوحدات.</div>' },
+
+    { id:'explorer-apply', stage:'A', title:'اطلب شارة Explorer', sub:'استرداد الشارة ← نموذج من ٣ خطوات',
+      body:
+        '<p>بعد اكتمال الوحدات تظهر بطاقة «أكمل المتطلبات للحصول على شارة Explorer» مكتوب عليها «اكتملت جميع المتطلبات». اضغط '+K('استرداد الشارة')+'، ويفتح لك نموذج «طلب الانضمام إلى Microsoft Elevate Explorer 2026-27»:</p>'+
+        '<ol class="how">'+
+        '<li><b>نبذة:</b> اقرأ التعريف واضغط '+K('بدء الطلب')+'.</li>'+
+        '<li><b>نبذة عنك:</b> عبّ البيانات واضغط '+K('الخطوة التالية')+':</li>'+
+        '</ol>'+
+        '<div class="fields"><div>الاسم الأول واسم العائلة</div><div>البريد الإلكتروني (يظهر تلقائيًا)</div><div>اسم المدرسة/المؤسسة</div><div>نوع المدرسة: عامة (ممولة من الحكومة)</div><div>مدينة المدرسة (حقل مطلوب)</div><div>البلد: Saudi Arabia</div><div>الدور الحالي: معلم في المرحلة الابتدائية/الثانوية</div><div>الحقول المكتوب عندها (اختياري) تقدر تتركها فاضية</div></div>'+
+        '<ol class="how" start="3"><li><b>إرسال:</b> اضغط '+K('استلام الشارة')+'.</li></ol>'+
+        '<div class="tip ok">قد تأخذ معالجة الطلب لين ساعة، وتوصلك الإشعارات في صفحة «تقدّمي» وعلى بريدك. ولو احتجت تكمّل بعدين اضغط '+K('الإكمال لاحقًا')+'، لأن النموذج يحفظ تلقائيًا.</div>' },
+
+    { id:'explorer-credly', stage:'A', title:'اقبل شارة Explorer في Credly', sub:'الشارة توصلك عبر Credly',
+      body:
+        '<ol class="how">'+
+        '<li>افتح Credly بنفس البريد، أو من رسالة Credly اللي توصلك بعد قبول الطلب.</li>'+
+        '<li>على شارة «Microsoft Elevate Educator – Explorer» اضغط '+K('Accept Badge')+'.</li>'+
+        '<li>في نافذة Badge settings خلّ <b>Public</b> و<b>Auto Accept</b> مفعّلة، واضغط '+K('Save and Accept Badge')+'.</li>'+
+        '<li>في رسالة «Congrats on your new badge!» اضغط '+K('Save skills')+'.</li>'+
+        '<li>اختياري: شارك الشارة على LinkedIn من «Share your badge».</li>'+
+        '</ol>'+ L(CREDLY,'فتح لوحة Credly') +
+        '<div class="tip ok">تفعيل <b>Auto Accept</b> يخلّي شارة Expert تنقبل تلقائيًا لاحقًا.</div>' },
+
+    { id:'expert-units', stage:'B', title:'شاهد وحدات Expert الست', sub:'تقدّمي ← Expert ← أكمل الدورات المطلوبة',
+      body:
+        '<p>ارجع للمنصة. في قسم «تقدّمي» صار Explorer «مكتمل»، وفي بطاقة Expert اضغط '+K('أكمل الدورات المطلوبة')+'، وبعدها '+K('شاهد الآن')+' لكل وحدة:</p>',
+      subs:[
+        ['كيف يولّد الذكاء الاصطناعي الأفكار','Expert: الوحدة ١ من ٦'],
+        ['ممارسة عملية مع Microsoft Copilot، الجزء 1 - مستوى Expert','Expert: الوحدة ٢ من ٦'],
+        ['من المخرجات إلى مسودة مقصودة','Expert: الوحدة ٣ من ٦'],
+        ['القيمة والمخاطر','Expert: الوحدة ٤ من ٦'],
+        ['ممارسة عملية مع Microsoft Copilot، الجزء 2 - مستوى Expert','Expert: الوحدة ٥ من ٦'],
+        ['القيادة والفرق','Expert: الوحدة ٦ من ٦']
+      ],
+      after:'<div class="tip ok">زر '+K('بدء التقديم')+' في بطاقة «طلب Expert» يتفعّل بس بعد ما تكتمل الوحدات الست.</div>' },
+
+    { id:'expert-draft', stage:'B', title:'جهّز إجاباتك في Word قبل فتح النموذج', sub:'إجابتان مكتوبتان + الأدوات اللي تستخدمها',
+      body:
+        '<p>النموذج يحفظ تلقائيًا، لكن كتابة الإجابات قبل بوقت تطلّعها أقوى. جهّز:</p>'+
+        '<ol class="how">'+
+        '<li><b>مثال واقعي</b> على استخدامك لأداة ذكاء اصطناعي في عملك: ما الذي أنشأته أو حسّنته، وكيف كيّفته لطلابك، وكيف دعم المتعلمين أو الزملاء (حد أقصى ٢٠٠٠ حرف).</li>'+
+        '<li><b>كيف تقدر Microsoft والمجتمع يدعمونك</b> في التعامل مع الذكاء الاصطناعي في دورك.</li>'+
+        '<li><b>قائمة الأدوات</b> اللي تستخدمها، وكم مرة: يومي، أسبوعي، شهري، نادرًا، أبدًا.</li>'+
+        '</ol>'+
+        '<div class="tip ok"><b>صيغة «قصة الأثر»:</b> التحدي ← الأداة ← ما فعلته ← الأثر (رقم أو شاهد) ← المشاركة مع الزملاء. اكتب تجربتك الحقيقية بأسلوبك، وخلّ Copilot يراجع اللغة بس.</div>' },
+
+    { id:'expert-form', stage:'B', title:'عبّي نموذج طلب Expert', sub:'طلب Expert ← بدء التقديم ← ٧ أقسام',
+      body:
+        '<p>في بطاقة «طلب Expert» اضغط '+K('بدء التقديم')+'، ويفتح «طلب Microsoft Elevate Expert لعام 2026-27». الأقسام بالترتيب:</p>'+
+        '<ol class="how">'+
+        '<li><b>نبذة:</b> تعريف بالطلب ← '+K('الخطوة التالية')+'.</li>'+
+        '<li><b>بياناتك:</b> الاسم، البريد الأساسي، بريد ثانوي (اختياري)، ووصف دورك (معلم في المرحلة...، قائد، مدرب...).</li>'+
+        '<li><b>موادك الدراسية:</b> المواد اللي تدرّسها، والفئات العمرية لطلابك.</li>'+
+        '<li><b>بيانات المدرسة:</b> اسم المدرسة، البلد، الموقع الإلكتروني، العنوان، نوع المدرسة، المدينة.</li>'+
+        '<li><b>سير عملك:</b> كم مرة تستخدم كل أداة، مثل Teams وCopilot Chat وForms وReading Coach وOneNote وMinecraft Education وغيرها.</li>'+
+        '<li><b>استبيان الذكاء الاصطناعي:</b> اختر الأدوات (Copilot Chat وMicrosoft 365 Copilot وغيرها)، والصق الإجابتين اللي جهّزتها.</li>'+
+        '<li><b>إرسال.</b></li>'+
+        '</ol>'+
+        '<div class="tip warn"><b>انتبه:</b> اكتب اسمك بنفس الطريقة في كل مكان، ومعلومات هذه الأقسام «لن تؤثر على طلبك» حسب المنصة. الإجابات المكتوبة هي الأهم.</div>' },
+
+    { id:'expert-submit', stage:'B', title:'أرسل الطلب واحتفظ بنسخة', sub:'قسم إرسال',
+      body:
+        '<ol class="how">'+
+        '<li>راجع الأقسام بزر '+K('رجوع')+' قبل الإرسال.</li>'+
+        '<li>في قسم «إرسال» أرسل الطلب.</li>'+
+        '<li>خذ لقطة شاشة لتأكيد الإرسال، واحتفظ بنسخة من إجاباتك في ملف الإنجاز.</li>'+
+        '</ol>' },
+
+    { id:'expert-credly', stage:'B', title:'تابع النتيجة واقبل شارة Expert', sub:'الإشعارات + Credly',
+      body:
+        '<ol class="how">'+
+        '<li>تابع صفحة «تقدّمي» في المنصة وبريدك.</li>'+
+        '<li>لما تُعتمد الشارة تظهر في Credly. إذا كان Auto Accept مفعّل تنقبل تلقائيًا، وإلا اضغط '+K('Accept Badge')+'.</li>'+
+        '<li>شاركها على LinkedIn، وخبّرنا في مجتمع «خطوة خبير» 🎉</li>'+
+        '</ol>'+ L(CREDLY,'فتح لوحة Credly') + L(ELEVATE,'فتح منصة التقديم') }
+  ];
+
+  var KEY = 'kk-apply-v1';
+  var state = { done:{}, subs:{} };
+  try { var s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && s.done) state = s; } catch(e){}
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+
+  var root = document.getElementById('steps');
+  var openId = null;
+  var arNum = function(n){ return String(n).replace(/\d/g, function(d){ return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
+
+  function currentIndex(){
+    for (var i = 0; i < STEPS.length; i++) if (!state.done[STEPS[i].id]) return i;
+    return STEPS.length;
+  }
+  function subsDone(st){
+    if (!st.subs) return true;
+    var a = state.subs[st.id] || [];
+    for (var i = 0; i < st.subs.length; i++) if (!a[i]) return false;
+    return true;
+  }
+
+  function render(scrollTo){
+    var cur = currentIndex();
+    if (openId === null && cur < STEPS.length) openId = STEPS[cur].id;
+    root.innerHTML = '';
+    var lastStage = null;
+    STEPS.forEach(function(st, i){
+      if (st.stage !== lastStage){
+        lastStage = st.stage; var S = STAGES[st.stage];
+        var h = document.createElement('div'); h.className = 'stage';
+        h.innerHTML = '<span class="badge" style="background:'+S.color+'">'+S.badge+'</span><div><h2>'+S.title+'</h2><p>'+S.sub+'</p></div>';
+        root.appendChild(h);
+      }
+      var isDone = !!state.done[st.id], isCur = i === cur, isLocked = i > cur;
+      var card = document.createElement('section');
+      card.className = 'step ' + (isDone ? 'done' : isCur ? 'current' : 'locked') + (openId === st.id && !isLocked ? ' open' : '');
+      card.id = 'step-' + st.id;
+      var pill = isDone ? '✓ مكتملة' : isCur ? 'الخطوة الحالية' : '🔒 بعد السابقة';
+      card.innerHTML =
+        '<div class="step-h" role="button" tabindex="0" aria-expanded="'+(openId===st.id && !isLocked)+'">'+
+          '<span class="num">'+(isDone ? '✓' : arNum(i+1))+'</span>'+
+          '<div class="t"><h3>'+st.title+'</h3><div class="sub">'+st.sub+'</div></div>'+
+          '<span class="pill">'+pill+'</span>'+
+        '</div>'+
+        '<div class="step-b">'+ st.body + subsHtml(st) + (st.after || '') + actHtml(st, isDone, isCur) + '</div>';
+      root.appendChild(card);
+
+      var head = card.querySelector('.step-h');
+      function toggle(){ if (isLocked) return; openId = (openId === st.id) ? '' : st.id; render(); }
+      head.addEventListener('click', toggle);
+      head.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } });
+
+      card.querySelectorAll('.subs input').forEach(function(cb){
+        cb.addEventListener('change', function(){
+          var a = state.subs[st.id] || []; a[+cb.dataset.i] = cb.checked; state.subs[st.id] = a; save();
+          cb.closest('label').classList.toggle('done', cb.checked);
+          var btn = card.querySelector('.done-btn'); if (btn) btn.disabled = !subsDone(st);
+          var need = card.querySelector('.need'); if (need) need.hidden = subsDone(st);
+        });
+      });
+      var btn = card.querySelector('.done-btn');
+      if (btn) btn.addEventListener('click', function(){
+        if (!subsDone(st)) return;
+        state.done[st.id] = true; save();
+        var n = currentIndex(); openId = n < STEPS.length ? STEPS[n].id : '';
+        render(openId);
+      });
+      var undo = card.querySelector('.undo');
+      if (undo) undo.addEventListener('click', function(){
+        for (var j = i; j < STEPS.length; j++) delete state.done[STEPS[j].id];
+        save(); openId = st.id; render(st.id);
+      });
+    });
+
+    var count = 0; STEPS.forEach(function(s){ if (state.done[s.id]) count++; });
+    document.getElementById('pcount').textContent = arNum(count);
+    document.getElementById('ptotal').textContent = arNum(STEPS.length);
+    document.getElementById('pbar').style.width = (count / STEPS.length * 100) + '%';
+    document.getElementById('finish').classList.toggle('show', count === STEPS.length);
+
+    if (scrollTo){
+      var el = document.getElementById('step-' + scrollTo) || document.getElementById('finish');
+      if (el) setTimeout(function(){ el.scrollIntoView({ behavior:'smooth', block:'start' }); window.scrollBy(0, -140); }, 60);
+    } else if (scrollTo === '' ) {
+      document.getElementById('finish').scrollIntoView({ behavior:'smooth', block:'center' });
+    }
+  }
+
+  function subsHtml(st){
+    if (!st.subs) return '';
+    var a = state.subs[st.id] || [];
+    return '<ul class="subs">' + st.subs.map(function(s, i){
+      return '<li><label class="'+(a[i]?'done':'')+'"><input type="checkbox" data-i="'+i+'" '+(a[i]?'checked':'')+'><span>'+s[0]+'<span class="u">'+s[1]+'</span></span></label></li>';
+    }).join('') + '</ul>';
+  }
+  function actHtml(st, isDone, isCur){
+    if (isDone) return '<div class="act"><span class="pill" style="background:var(--ok-bg);color:var(--tealgreen)">✓ أنجزت هذه الخطوة</span><button type="button" class="undo">تراجع عنها</button></div>';
+    if (!isCur) return '';
+    var ok = subsDone(st);
+    return '<div class="act"><button type="button" class="done-btn" '+(ok?'':'disabled')+'>أنجزت هذه الخطوة ← التالية</button>'+
+      (st.subs ? '<span class="need" '+(ok?'hidden':'')+'>علّم كل الوحدات أولًا</span>' : '') + '</div>';
+  }
+
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    if (!confirm('تبغى تمسح تقدّمك وتبدأ من الخطوة الأولى؟')) return;
+    state = { done:{}, subs:{} }; save(); openId = STEPS[0].id; render(STEPS[0].id);
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
